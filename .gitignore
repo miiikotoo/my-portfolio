@@ -1,0 +1,23 @@
+# macOS Finder metadata (including nested directories)
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# AppleDouble resource forks
+._*
+
+# macOS volume metadata and temporary folders
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.DocumentRevisions-V100
+.com.apple.timemachine.donotpresent
+.apdisk
+
+# macOS network share metadata
+.AppleDB
+.AppleDesktop
+Network Trash Folder/
+Temporary Items/
