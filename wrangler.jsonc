@@ -4,6 +4,7 @@
   "assets": {
     "directory": "./src"
   },
+  "previews": {},
   "routes": [
     {
       "pattern": "www.mikoto0506.site",
