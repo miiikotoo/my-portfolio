@@ -1,0 +1,13 @@
+{
+  "name": "my-portfolio",
+  "compatibility_date": "2026-11-05",
+  "assets": {
+    "directory": "./src"
+  },
+  "routes": [
+    {
+      "pattern": "www.mikoto0506.site",
+      "custom_domain": true
+    }
+  ]
+}
