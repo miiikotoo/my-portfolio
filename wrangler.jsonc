@@ -7,7 +7,7 @@
   "previews": {},
   "routes": [
     {
-      "pattern": "www.mikoto0506.site",
+      "pattern": "mikoto0506.site",
       "custom_domain": true
     }
   ]

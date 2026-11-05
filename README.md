@@ -3,7 +3,7 @@
 転職活動で採用担当者に提出する、Mikoto Shishido のエンジニアポートフォリオです。
 Webサイト・メディア制作、アプリケーション・システム開発、個人制作の実績を紹介します。
 
-公開サイトは [www.mikoto0506.site](https://www.mikoto0506.site/) です。
+公開サイトは [mikoto0506.site](https://mikoto0506.site/) です。
 
 ## ディレクトリ構成
 
@@ -37,7 +37,7 @@ python3 -m http.server 8000 --bind 127.0.0.1 --directory src
 
 ## Cloudflare Workers への自動デプロイ
 
-`wrangler.jsonc` で既存の Worker `my-portfolio` に `src/` を静的アセットとして配信し、独自ドメイン `www.mikoto0506.site` を割り当てます。
+`wrangler.jsonc` で既存の Worker `my-portfolio` に独自ドメイン `mikoto0506.site` を割り当て、`src/` の静的ファイルを配信します。
 
 Cloudflare ダッシュボードの **Workers & Pages → my-portfolio → Settings → Builds** で、この GitHub リポジトリを接続し、次のように設定します。
 
