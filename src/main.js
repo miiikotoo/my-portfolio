@@ -1,14 +1,14 @@
 "use strict";
 // 業務実績のURLはリンク化しない。画像は掲載許可の確認後に差し替える。
 const media = [
-  {name:"マッチングアプリ大学",url:"https://next-level.biz/maripita/app/"},
-  {name:"マリピタ",url:"https://next-level.biz/maripita/"},
-  {name:"縁結び大学",url:"https://enmusubis.jp/"},
-  {name:"地方移住",url:"https://ijyu.enmusubis.jp/"},
-  {name:"スピカ",url:"https://marri-marri.jp/media/"},
-  {name:"GENTRY",url:"https://marri-marri.jp/gentry/"},
-  {name:"MoreJob",url:"https://morejob.co.jp/"},
-  {name:"ミライのお仕事",url:"https://morejob.co.jp/mirai/"}
+  {name:"マッチングアプリ大学",url:"https://next-level.biz/maripita/app/",image:{src:"./images/matching-app-university.png",alt:"マッチングアプリ大学のトップページ"}},
+  {name:"マリピタ",url:"https://next-level.biz/maripita/",image:{src:"./images/maripita.png",alt:"マリピタのトップページ"}},
+  {name:"縁結び大学",url:"https://enmusubis.jp/",image:{src:"./images/enmusubi-university.png",alt:"縁結び大学のトップページ"}},
+  {name:"地方移住",url:"https://ijyu.enmusubis.jp/",image:{src:"./images/regional-relocation.png",alt:"地方移住のトップページ"}},
+  {name:"スピカ",url:"https://marri-marri.jp/media/",image:{src:"./images/spica.png",alt:"スピカのトップページ"}},
+  {name:"GENTRY",url:"https://marri-marri.jp/gentry/",image:{src:"./images/gentry.png",alt:"GENTRYのトップページ"}},
+  {name:"MoreJob",url:"https://morejob.co.jp/",image:{src:"./images/morejob.png",alt:"MoreJobのトップページ"}},
+  {name:"ミライのお仕事",url:"https://morejob.co.jp/mirai/",image:{src:"./images/mirai-no-oshigoto.png",alt:"ミライのお仕事のトップページ"}}
 ];
 const applications = [
   {name:"Flender",kind:"VIRTUAL OFFICE SAAS / LANDING PAGE",summary:"仮想オフィスSaaSのWebアプリケーション開発と、サービス紹介LPの制作を担当。",detail:"Reactによるフロントエンド開発、チャット・Web会議・スケジュール・メモ・管理画面のUI実装、API連携、開発進行の調整。",tags:["React","JavaScript","CakePHP","Axios","Storybook"],url:"https://flender.jp/",urlNote:"サービス紹介LPも制作を担当"},
@@ -19,6 +19,35 @@ const applications = [
 ];
 const monitorSvg='<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="8" width="36" height="26" rx="2"/><path d="M18 40h12M24 34v6M6 15h36"/></svg>';
 function node(tag,cls,text){const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;}
-function renderMedia(){const root=document.getElementById("media-grid");if(!root)return;media.forEach(item=>{const card=node("article","media-card");const visual=node("div","media-visual");visual.innerHTML=monitorSvg;visual.append(node("span","", "IMAGE COMING SOON"));const content=node("div","media-content");content.append(node("h4","",item.name),node("p","","WEB SITE / WORDPRESS"),node("div","plain-url",item.url));card.append(visual,content);root.append(card);});}
+function renderMedia() {
+  const root = document.getElementById("media-grid");
+  if (!root) return;
+
+  media.forEach(item => {
+    const card = node("article", "media-card");
+    const visual = node("div", "media-visual");
+    const showPlaceholder = () => {
+      visual.innerHTML = monitorSvg;
+      visual.append(node("span", "", "画像準備中"));
+    };
+
+    if (item.image) {
+      const image = node("img", "media-screenshot");
+      image.alt = item.image.alt;
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.addEventListener("error", showPlaceholder, { once: true });
+      image.src = item.image.src;
+      visual.append(image);
+    } else {
+      showPlaceholder();
+    }
+
+    const content = node("div", "media-content");
+    content.append(node("h4", "", item.name), node("p", "", "WEB SITE / WORDPRESS"), node("div", "plain-url", item.url));
+    card.append(visual, content);
+    root.append(card);
+  });
+}
 function renderApps(){const root=document.getElementById("app-list");if(!root)return;applications.forEach((item,index)=>{const card=node("article","app-card");card.append(node("div","app-number",String(index+1).padStart(2,"0")));const main=node("div","app-main");main.append(node("p","project-kicker",item.kind),node("h4","",item.name),node("p","",item.summary),node("p","detail",item.detail));const tags=node("div","tags");item.tags.forEach(t=>tags.append(node("span","tag",t)));main.append(tags);card.append(main);const side=node("div","app-side");side.append(node("p","side-label",item.url?"PUBLIC SERVICE PAGE":"PROJECT INFORMATION"));if(item.url){side.append(node("div","plain-url",item.url),node("p","side-note",item.urlNote));}else{side.append(node("p","side-note","非公開プロジェクトのため画面・URLは掲載していません。"));}card.append(side);root.append(card);});}
 renderMedia();renderApps();
