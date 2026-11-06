@@ -7,6 +7,9 @@
   <meta name="description" content="Mikoto ShishidoのWebエンジニアポートフォリオ。Webサイト制作・運用、Webアプリケーション開発の実績を紹介します。">
   <meta name="theme-color" content="#f7f8fa">
   <title>Mikoto Shishido | Web Engineer</title>
+  <link rel="icon" href="./favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="./site.webmanifest">
   <link rel="stylesheet" href="./styles.css">
   <script src="./main.js" defer></script>
 </head>
@@ -64,7 +67,7 @@
         <div class="app-list" id="app-list" aria-label="アプリケーション・システム実績一覧"></div>
         <div class="works-intro personal-intro"><div class="category-index">03 <span>PERSONAL PROJECT</span></div><div><h3>個人制作</h3></div></div>
         <article class="personal-card" id="typing-quest" aria-labelledby="typing-quest-title">
-          <div class="personal-icon" aria-hidden="true">&gt;_</div>
+          <img class="personal-screenshot" src="./images/typing-quest.png" alt="Typing Quest のステージ選択画面" width="1530" height="754" loading="lazy" decoding="async">
           <div>
             <p class="project-kicker">BROWSER GAME / HTML · CSS · JAVASCRIPT</p>
             <h4 id="typing-quest-title">Typing Quest</h4>
@@ -82,6 +85,21 @@
       </div></div>
     </section>
   </main>
+  <dialog id="media-details" class="media-details" aria-labelledby="media-details-title">
+    <div class="media-details-header">
+      <h2 id="media-details-title"></h2>
+      <form method="dialog">
+        <button class="media-details-close" aria-label="閉じる" autofocus>
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="m6 6 12 12M18 6 6 18"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+    <p id="media-gallery-hint" hidden>横にスクロールすると次の画像を表示できます。</p>
+    <div id="media-gallery" class="media-gallery" role="region" aria-label="スクリーンショット"></div>
+    <div id="media-description"></div>
+  </dialog>
   <footer class="footer"><div class="container footer-inner"><div><strong>Mikoto Shishido<span class="accent">.</span></strong><p>Web Engineer Portfolio</p></div><a href="#top">Back to top ↑</a></div></footer>
 </body>
 </html>
